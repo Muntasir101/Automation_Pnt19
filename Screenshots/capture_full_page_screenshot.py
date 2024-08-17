@@ -3,8 +3,6 @@ import time
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 
-
-
 driver = webdriver.Firefox()
 
 wait = WebDriverWait(driver, 30)
@@ -18,10 +16,6 @@ time.sleep(2)
 page_height = driver.execute_script("return document.body.scrollHeight")
 driver.set_window_size(1920, page_height)
 
-
 driver.save_screenshot("apple.png")
 
 driver.quit()
-
-
-
