@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from openpyxl import load_workbook
+from datetime import datetime, timedelta
 
 excel_file = "E:\\Offline_Batch_19\\Projects\\Automation_pnt19\\Project1-Fight_cost\\test_data.xlsx"
 
@@ -47,7 +48,10 @@ def test_calculate_fare(setup, row, distance_value, ticket_class, number_of_tick
     departure_date = WebDriverWait(setup, 10).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, "input#departureDate"))
     )
-    departure_date.send_keys("2024-08-24")
+
+    # next day
+    current_date_plus_1 = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
+    departure_date.send_keys(current_date_plus_1)
 
     # Set class
     service_class = WebDriverWait(setup, 10).until(
