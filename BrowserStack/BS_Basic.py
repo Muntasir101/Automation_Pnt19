@@ -1,15 +1,9 @@
-"""
-Browser stack :
-email: cisicey819@ndiety.com
-pass: cisicey819@ndiety.com
 
-browserstack-sdk python .\Project1-Fight_cost\bs.py
-"""
 
 from selenium import webdriver
 
 driver = webdriver.Remote(
-    command_executor='https://muntasir_zx5P0S:HswQH1tWVxrfWVeFCaye@hub.browserstack.com:80/wd/hub')
+    command_executor='https://<<user>>:<<access key>>@hub.browserstack.com:80/wd/hub')
 
 driver.maximize_window()
 
