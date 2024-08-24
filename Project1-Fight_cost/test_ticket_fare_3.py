@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from openpyxl import load_workbook
 from datetime import datetime, timedelta
+from pytest_html_reporter import attach
 
 excel_file = "E:\\Offline_Batch_19\\Projects\\Automation_pnt19\\Project1-Fight_cost\\test_data.xlsx"
 
@@ -82,6 +83,8 @@ def test_calculate_fare(setup, row, distance_value, ticket_class, number_of_tick
     calculated_fare = WebDriverWait(setup, 10).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, "div#result"))
     ).text
+
+    attach(data=setup.get_screenshot_as_png())
 
     result = "Pass" if calculated_fare == expected_cost else 'Fail'
 
