@@ -3,13 +3,18 @@ import time
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver import ChromeOptions
+
 
 
 @pytest.fixture
 def driver():
-    # 1. Launch browser
-    driver = webdriver.Chrome()
+    # 1. Launch browser in headless mode
+    options = ChromeOptions()
+    options.add_argument("--headless=new")
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
+    print("Browser Launched successfully.")
     driver.implicitly_wait(20)
     # close browser
     yield driver
